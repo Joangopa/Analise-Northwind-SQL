@@ -11,7 +11,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Qual foi o total de receitas no ano de 1997?
 
     ```sql
-    CREATE VIEW total_revenues_1997_view AS
     SELECT SUM((order_details.unit_price) * order_details.quantity * (1.0 - order_details.discount)) AS total_revenues_1997
     FROM order_details
     INNER JOIN (
@@ -25,7 +24,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Faça uma análise de crescimento mensal e o cálculo de YTD
 
     ```sql
-    CREATE VIEW view_receitas_acumuladas AS
     WITH ReceitasMensais AS (
         SELECT
             EXTRACT(YEAR FROM orders.order_date) AS Ano,
@@ -66,7 +64,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Qual é o valor total que cada cliente já pagou até agora?
 
     ```sql
-    CREATE VIEW view_total_revenues_per_customer AS
     SELECT 
         customers.company_name, 
         SUM(order_details.unit_price * order_details.quantity * (1.0 - order_details.discount)) AS total
@@ -85,7 +82,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Separe os clientes em 5 grupos de acordo com o valor pago por cliente
 
     ```sql
-    CREATE VIEW view_total_revenues_per_customer_group AS
     SELECT 
     customers.company_name, 
     SUM(order_details.unit_price * order_details.quantity * (1.0 - order_details.discount)) AS total,
@@ -106,7 +102,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Agora somente os clientes que estão nos grupos 3, 4 e 5 para que seja feita uma análise de Marketing especial com eles
 
     ```sql
-    CREATE VIEW clients_to_marketing AS
     WITH clientes_para_marketing AS (
         SELECT 
         customers.company_name, 
@@ -134,7 +129,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Identificar os 10 produtos mais vendidos.
 
     ```sql
-    CREATE VIEW top_10_products AS
     SELECT products.product_name, SUM(order_details.unit_price * order_details.quantity * (1.0 - order_details.discount)) AS sales
     FROM products
     INNER JOIN order_details ON order_details.product_id = products.product_id
@@ -147,7 +141,6 @@ Este repositório tem como objetivo apresentar relatórios construídos em SQL. 
     * Quais clientes do Reino Unido pagaram mais de 1000 dólares?
 
     ```sql
-    CREATE VIEW uk_clients_who_pay_more_then_1000 AS
     SELECT customers.contact_name, SUM(order_details.unit_price * order_details.quantity * (1.0 - order_details.discount) * 100) / 100 AS payments
     FROM customers
     INNER JOIN orders ON orders.customer_id = customers.customer_id
