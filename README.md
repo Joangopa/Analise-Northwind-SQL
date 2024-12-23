@@ -177,7 +177,7 @@ O banco de dados `Northwind` inclui 14 tabelas e os relacionamentos entre as tab
 
 Utilize o arquivo SQL fornecido, `nortwhind.sql`, para popular o seu banco de dados.
 
-### Com Docker e Docker Compose
+### Com Docker
 
 **Pré-requisito**: Instale o Docker e Docker Compose
 
@@ -187,7 +187,7 @@ Utilize o arquivo SQL fornecido, `nortwhind.sql`, para popular o seu banco de da
 
 1. **Iniciar o Docker Compose** Execute o comando abaixo para subir os serviços:
     
-    ```
+    ```bash
     docker compose up
     ```
     
@@ -201,7 +201,9 @@ Configure um novo servidor no PgAdmin:
     * **Aba Connection**:
         * Nome do host: db
         * Nome de usuário: postgres
-        * Senha: postgres Em seguida, selecione o banco de dados "northwind".
+        * Senha: postgres 
+        
+Em seguida, selecione o banco de dados "northwind".
 
 3. **Parar o Docker Compose** Pare o servidor iniciado pelo comando `docker compose up` usando Ctrl-C e remova os contêineres com:
     
